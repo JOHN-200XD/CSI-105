@@ -6,37 +6,60 @@
     <title>array</title>
     <style>
         body {
-            align-items: center;
+            display: flex;
+            margin: 0;
             text-align: center;
-            margin-top: 10rem;
         }
         input {
-            font-size: 35px;
-            padding: 15px;
+            display: inline-block;
+            font-size: 30px;
+            padding: 1rem;
+            margin: 1rem;
             text-align: center;
         }
         label {
-            font-size: 30px;
-            margin-right: 10px;
+           display: inline-block;
+           text-align: center;
+              font-size: 30px;
+        }
+        #result {
+            display: block;
+            font-size: 50px;
+            margin: 20px auto;
+            height: 100px;
+            width: 300px;
+            text-align: center;
         }
         div {
+            display: block;
             font-size: 40px;
             margin: 10px auto;
-            display: inline-block;
             height: 500px;
             width: 800px;
             text-align: center;
         }
-        #mute-music {
-            display: flex;
-            height: 50px;
-            width: 50px;
+        .pp{
+            display:inline-block;
+            justify-content: space-between;
+            align-items: center;
+            height: 100px;
+            width: 400px;
+            margin-bottom: 2rem;
+        }
+        audio {
+            display: none;
+            position: static;
+        }
+        #conrol-music{
+            display: inline-block;
+            height: 43px;
+            width: 43px;
+            position: static
         }
         img {
-        
             height: 450px;
             width: 450px;
-            margin-top: 10px;
+            margin-top: 30px;
             border-radius: 225px;
         }
         button {
@@ -47,16 +70,22 @@
     </style>
 </head>
 <body>
-    <img id="mute-music" src="" alt="">
     <div>
-        <label for="input">in push number</label>
-        <input type="number" name="" id="num">
-        <div>
-            <label for="" id="result"></label>
-            <img id="img-pop-up" src="https://i.pinimg.com/originals/62/f5/9a/62f59a8bb55dc2d8eb2c08f07567c51f.gif" alt="">
+        <div class="pp">
+            <img id="conrol-music" src="https://i.pinimg.com/736x/ce/57/fb/ce57fb5565b5fdb2911843c06d0fc7d6.jpg" alt="">
+            <audio id="music" src="ไฟกลางคืน.mp3" controls></audio>
+            <label for="input">in push number
+            </label>
+            <input type="number" name="" id="num">
+            <label for="" id="result">
+            </label>
         </div>
+            <div>
+            <img id="img-pop-up" src="https://i.pinimg.com/originals/62/f5/9a/62f59a8bb55dc2d8eb2c08f07567c51f.gif"              alt="">
+            <button onclick="addData()">add</button>
+            <button onclick="dele()">dele</button>
+            </div>
     </div>
 </body>
-
 </html>
 <script src="araay-1.js"></script>
