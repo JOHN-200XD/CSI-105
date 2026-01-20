@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>recusive</title>
+</head>
+<body>
+    <label for="">in Push</label>
+    <h3 id="out-text"></h3>    
+    <input type="number" name="" id="input">
+    <button onclick="cale()">Push</button>
+</body>
+<script>
+const num = document.getElementById("inpust")
+const out = document.getElementById("out-text")
+out.innerHTML = "";
+function cale(){
+    let num = document.getElementById("input").value;
+    for (let i = 10; 0<= i; i--){
+        let p = num + x(i);
+        out.innerHTML += p +"<br>";
+    }
+}
+let an = fac(5);
+console.log(an);
+function fac(n){
+    if (n==1 || n==0){
+        return 1;
+    } else {
+        return n * fac(n-1);
+    }
+}
+console.log(x(5));
+function x(n){
+    if (n == 0){
+        return 1;
+    } else {
+        return  x(n-1)*2;  
+    }
+}
+</script>
+</html> 
