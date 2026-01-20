@@ -6,7 +6,6 @@
     <title>array</title>
     <style>
         body {
-            display: flex;
             margin: 0;
             text-align: center;
         }
@@ -34,10 +33,11 @@
             display: block;
             font-size: 40px;
             margin: 10px auto;
-            height: 500px;
+            height: 350px;
             width: 800px;
             text-align: center;
         }
+
         .pp{
             display:inline-block;
             justify-content: space-between;
@@ -57,15 +57,15 @@
             position: static
         }
         img {
-            height: 450px;
-            width: 450px;
+            height: 250px;
+            width: 250px;
             margin-top: 30px;
             border-radius: 225px;
         }
         button {
             font-size: 2rem;
-            margin-top: 10px;
-            padding: 100px 202px;
+            margin-top: 30px;
+            padding: 30px 100px;
         }
     </style>
 </head>
@@ -74,7 +74,7 @@
         <div class="pp">
             <img id="conrol-music" src="https://i.pinimg.com/736x/ce/57/fb/ce57fb5565b5fdb2911843c06d0fc7d6.jpg" alt="">
             <audio id="music" src="ไฟกลางคืน.mp3" controls></audio>
-            <label for="input">in push number
+            <label for="input"> Push number
             </label>
             <input type="number" name="" id="num">
             <label for="" id="result">
@@ -82,9 +82,9 @@
         </div>
             <div>
             <img id="img-pop-up" src="https://i.pinimg.com/originals/62/f5/9a/62f59a8bb55dc2d8eb2c08f07567c51f.gif" alt="">
-            <button onclick="addData()">add</button>
-            <button onclick="dele()">dele</button>
-            </div>
+        </div>
+        <button onclick="addData()">add</button>
+        <button onclick="dele()">dele</button>
     </div>
 </body>
 </html>
