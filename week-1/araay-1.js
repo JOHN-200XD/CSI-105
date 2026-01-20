@@ -8,6 +8,11 @@ document.getElementById("num").addEventListener("keypress", function(event){
         addData();
     }   
 });
+document.getElementById("num").addEventListener("keypress", function(event_dele){
+    if (event_dele.key === 'shift'){
+        dele();
+    }   
+});
 function addData() {
     let num = parseInt(n.value)
     arr.push(num)
@@ -19,44 +24,24 @@ function addData() {
     } if (num % 2 === 0){
         let pat = num * 2
         out.innerHTML += num + " is คู่ <br>" + pat + "<br>"
-        img.style.display = "inline-block";
-        img.src = "https://i.pinimg.com/736x/48/a7/8d/48a78d886c2a3ffbac8472811aced3fc.jpg";
-        img.style.padding = "10px";
-        img.style.borderRadius = "0px";
-        img.style.height = "350px";
-        img.style.width = "400px";
-        img.style.marginTop = "0px";
-        out.style.color = "black";
+        showImg_pair();
 
     } if (num % 2 !== 0){
         let pat = num * 1
         out.innerHTML += num + " is คี่ <br>" + pat + "<br>";
-        img.style.display = "inline-block";
-        img.src = "https://i.pinimg.com/736x/7b/b4/5f/7bb45f567a122959248cb025c46952ad.jpg";
-        img.style.padding = "10px";
-        img.style.borderRadius = "0px";
-        img.style.height = "350px";
-        img.style.width = "400px";
-        img.style.marginTop = "0px";
-        out.style.color = "blaCK";
+        showImg_odd();
      
-    }  if (num <= 0 || isNaN(num)){
-        out.innerHTML = "Please enter a number";
-        img.style.display = "inline-block";
-        img.src = "https://i.pinimg.com/736x/fe/c3/58/fec3580c3cf476955bdadf12926c4ffa.jpg";
-        img.style.padding = "10px";
-        img.style.borderRadius = "0px";
-        img.style.height = "350px";
-        img.style.width = "350px";
-        out.style.fontSize = "50px";
-        out.style.padding = "50px";
-        img.style.marginTop = "0px";
-        out.style.color = "red";
+    }  if (num <= 0 ){
+        out.innerHTML = "";
+        showImg_null_num();
         // arr.pop(); // ตัว pop จะลบค่าที่ไม่ถูกต้องออกจากอาเรย์จากด้านหลัง
-    } 
+    } if (isNaN(num)){
+        out.innerHTML = "Push number ";
+        showImg_null();
+    }
 }
 // ลบค่าตัวท้ายสุดออกจากอาเรย์
-document.getElementById("dele")
+document.getElementById("dele") 
 function dele() {
     arr.pop();
     out.innerHTML = ""; 
@@ -64,18 +49,10 @@ function dele() {
     console.log("array after pop: " + arr);
     if (arr.length === 0){
         out.innerHTML = "deleted successfully";
-        img.style.display = "inline-block";
-        img.src = "https://i.pinimg.com/736x/fe/c3/58/fec3580c3cf476955bdadf12926c4ffa.jpg";
-        img.style.padding = "10px";
-        img.style.borderRadius = "0px";
-        img.style.height = "350px";
-        img.style.width = "350px";
-        out.style.fontSize = "50px";
-        out.style.padding = "50px";
-        img.style.marginTop = "0px";
-        out.style.color = "red";
-    }
+        showImg_null(); 
+    } 
 }
+
 // play and stop music
 let p = 0;
 const play = document.getElementById("conrol-music");
@@ -98,4 +75,52 @@ function playMusic() {
         music.style.display = "none";
 
     }   
+}
+
+// แสดงรูป 
+function showImg_pair(){
+        img.style.display = "inline-block";
+        img.src = "https://i.pinimg.com/736x/48/a7/8d/48a78d886c2a3ffbac8472811aced3fc.jpg";
+        img.style.padding = "10px";
+        img.style.borderRadius = "0px";
+        img.style.height = "350px";
+        img.style.width = "400px";
+        img.style.marginTop = "0px";
+        out.style.color = "black";
+}
+
+function showImg_odd(){
+        img.style.display = "inline-block";
+        img.src = "https://i.pinimg.com/736x/7b/b4/5f/7bb45f567a122959248cb025c46952ad.jpg";
+        img.style.padding = "10px";
+        img.style.borderRadius = "0px";
+        img.style.height = "350px";
+        img.style.width = "400px";
+        img.style.marginTop = "0px";
+        out.style.color = "black";
+}
+
+function showImg_null(){
+        img.style.display = "inline-block";
+        img.src = "https://i.pinimg.com/736x/fe/c3/58/fec3580c3cf476955bdadf12926c4ffa.jpg";
+        img.style.padding = "10px";
+        img.style.borderRadius = "0px";
+        img.style.height = "350px";
+        img.style.width = "350px";
+        out.style.fontSize = "50px";
+        out.style.padding = "50px";
+        img.style.marginTop = "0px";
+        out.style.color = "red";
+}
+function showImg_null_num(){
+        img.style.display = "inline-block";
+        img.src = "https://i.pinimg.com/736x/e8/b3/02/e8b302e4fc896a794e7e8eb7ae4a8fe2.jpg";
+        img.style.padding = "10px";
+        img.style.borderRadius = "0px";
+        img.style.height = "350px";
+        img.style.width = "350px";
+        out.style.fontSize = "50px";
+        out.style.padding = "50px";
+        img.style.marginTop = "0px";
+        out.style.color = "green";
 }
