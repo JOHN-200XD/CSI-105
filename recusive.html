@@ -10,17 +10,22 @@
     <h3 id="out-text"></h3>    
     <h3 id="out-pop"></h3>    
     <input type="number" name="" id="input">
-    <button onclick="cale()">Push</button>
+    <button onclick="push()">Push</button>
 </body>
 <script>
 const n = document.getElementById("input")
 const pop = document.getElementById("out-pop")
 const out = document.getElementById("out-text")
-function cale(){
+document.getElementById("input").addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+        push();
+    }
+});
+function push(){
     let cale_num = parseInt(n.value);   
     out.innerHTML = "";
     for (let i = cale_num; i > 0; i--){
-         p = fac(cale_num); 
+         p = sum(cale_num); 
          let bat_result = bat(cale_num); 
          out.innerHTML = p.out_text + " = " + p.n + "<br>" + p.log;
          pop.innerHTML ="fibonacci " + bat_result.out_text + " = " + bat_result.n + "<br>" + bat_result.log;
@@ -30,19 +35,19 @@ function cale(){
 
 }
 
-function fac(n){
-    if (n===0){
+function sum(n){
+    if (n === 0){
         return {
-            log:"0",
+            log:"0<br>",
             n:0,
             out_text: "0",
         };
     } 
-    let pan = fac(n-1);
+    let pan = sum(n-1);
     return {
         n:n+pan.n,
         out_text:pan.out_text + "+" + n,
-        log: pan.log + ` + ${n} → ผลรวม = ${n+pan.n}\n`,
+        log: pan.log += `${pan.n} + ${n} = ${n + pan.n}<br>`,
     }
 }
 
@@ -59,7 +64,7 @@ function bat(n){
             n: 1,
             t: 0,
             out_text: "0,1",
-            log:"F(1) = 1\n",
+            log:"F(1) = 1<br>",
         };
     }
     let re_1 = bat(n-1);
@@ -68,7 +73,7 @@ function bat(n){
         n: current,
         t: re_1.n,
         out_text: re_1.out_text + "," + current,
-        log: re_1.log + `, F(${n}) = ${current}\n`,
+        log: re_1.log + ` F(${n}) = ${current}<br>`,
     };
     
 }
