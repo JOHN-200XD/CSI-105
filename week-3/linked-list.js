@@ -1,62 +1,67 @@
-class node{
-    constructor(elem){
-        this.elememnt = elem
+let data = document.getElementById("data")
+
+document.getElementById("push").onclick = function(){
+    myLisy.unshift(data.value)
+    console.log(myLisy)
+}
+function delet(){
+    myLisy.shift()
+    console.log(myLisy)
+}
+class Node{
+    constructor(element){
+        this.element = element
         this.next = null
-        this.lenght = 0
     }
 }
 class Linked{
     constructor(){
-        this.new = null
-        this.lest = null
-        this.lenght = 0
+        this.head = null
+        this.last = null
+        this.length = 0
     }
     pus(value){
-        const newnode = new node(value)
-        if(this.new == null){
-            this.new = newnode
-            this.lest = newnode
+        const newnode = new Node(value)
+        if(this.head == null){
+            this.head = newnode
+            this.last = newnode
         }
         else{
-            newnode.next = this.new
-            this.lest.new = newnode
-            this.lest = newnode
+            this.last.next = newnode
+            this.last = newnode
         }
-        this.lenght++
-    }
+        this.length++
+    }  
     unshift(value){
-        const newnode = new node(value)
-        if (this.new == null){
-            this.new = newnode
-            this.lest = newnode
+        let newnode = new Node(value)
+        if (this.head == null){
+            this.head = newnode
+            this.last = newnode
         }else {
-            newnode.next = this.new
-            this.new = newnode
-            this.lest = newnode
+            newnode.next = this.head
+            this.head = newnode
         }
-        this.lenght++
+        this.length++
+    
     }
     shift(){
-            let constructor = this.new
-        if (this.lenght == 0){
+        
+        if (this.length == 0){
             return undefined
         }
-            this.new = this.new.next
-            constructor.next = null
-            this.lenght--
-        if(this.lenght == 0) {
-            this.lest = null
-        }
-        return constructor
-    }
+        let remove = this.head
+            this.head = this.head.next
+            remove.next = null
+            this.length--
+            if (this.length == 0){ 
+            this.head = null
+            this.last = null
+            }
+            return remove
+    }   
 }
 
 //  main
-const newnode = new node()
+// const newnode = new Node()
 let myLisy = new Linked()
 let r = myLisy.shift()
-myLisy.unshift("a")
-myLisy.unshift("b")
-myLisy.unshift("c") 
-myLisy.shift("a")
-console.log(myLisy)
