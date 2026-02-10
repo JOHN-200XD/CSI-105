@@ -17,8 +17,8 @@
     let output = document.getElementById("text")
     function main(){
         let g = put.value
-        infix(g)
-        output.innerHTML = output
+        let top = infix(g)
+        output.innerHTML = top
         
     }
     function infix(g){
@@ -65,6 +65,8 @@
         }else{
             return 0
         }
+        console.log(myStake.chakepriority());
+        
     }
     class Stake{
         constructor(){
