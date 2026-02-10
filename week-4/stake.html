@@ -32,7 +32,7 @@
                 while(!myStake.isEmpy() && chakepriority(ck) <= chakepriority(myStake.peek()))
                 out = out+myStake.pop()
             }else if (ck == ")"){
-                while(!myStake.isEmpy() && myStake() != "("){
+                while(!myStake.isEmpy() && myStake.peek() != "("){
                     out = out+myStake.pop()
                 }
             }else{
