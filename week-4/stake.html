@@ -6,9 +6,108 @@
     <title>Document</title> 
 </head>
 <body>
+    <label for="">input text</label>
+    <input type="text" id="infor">
+    <h1 id="text"></h1>
+    <button onclick="main()">ok</button>
     
 </body>
 <script>
+    const put  =  document.getElementById("infor")
+    let output = document.getElementById("text")
+    function main(){
+        let g = put.value
+        infix(g)
+        output.innerHTML = output
+        
+    }
+    function infix(g){
+        let out = ""
+        let myStake = new Stake()
+        for(let i = 0;i<g.length;i++){
+            let ck = g.charAt(i)
+            if (ck == "("){
+                myStake.push(ck)
+            }else if (chack(ck)){
+                while(!myStake.isEmpy() && chakepriority(ck) <= chakepriority(myStake.peek()))
+                out = out+myStake.pop()
+            }else if (ck == ")"){
+                while(!myStake.isEmpy() && myStake() != "("){
+                    out = out+myStake.pop()
+                }
+            }else{
+                out = out+ck
+            }
+            myStake.push(ck)
+            console.log(myStake);
+            
+        }
+        while(!myStake.isEmpy()){
+            out = out+myStake.pop()
+        }
+        return out
+    }
+    function chack (c){
+        if(c == "+" || c == "-" || c == '*' || c == '/' || c == "^"){
+            return true
+        }else{
+            return false
+        }
+    }
+    function chakepriority(c) {
+        if(c == "+" || c == "-"){
+            return 1
+        }
+        else if(c == "*" || c == "/"){
+            return 2
+        }else if (c == "^"){
+            return 3
+        }else{
+            return 0
+        }
+    }
+    class Stake{
+        constructor(){
+            this.Stake = []
+        }
+        push(value){
+            this.Stake.push(value)
+        }
+        isEmpy(){
+            return this.Stake.length == 0
+            // if(this.Stake.length == 0){
+            //     return true
+            // }
+            // else{
+            //     return false
+            // }
+        }
+        pop(){
+            return this.isEmpy() ? "" :
+            this.Stake.pop()
+            // if(this.isEmpy()){
+            //     return ""
+            // }
+            // else{
+            //     return this.Stake.pop()
+            // }
+        }   
+        peek(){
+            return this.Stake[this.Stake.length-1]
+        }
+    }
+    // let myStkae = new Stake()
+    // myStkae.push("a")
+    // myStkae.push("b")
+    // myStkae.push("c")
+    // console.log(myStkae);
+    // let b = myStkae.pop()
+    // console.log(b);
+    // console.log(myStkae);
+    // console.log(myStkae.peek());
+    
+
+    
     
 </script>
 </html>
