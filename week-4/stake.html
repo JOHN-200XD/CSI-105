@@ -13,39 +13,48 @@
     
 </body>
 <script>
-    const put  =  document.getElementById("infor")
+    const input  =  document.getElementById("infor")
     const output = document.getElementById("text")
     function main(){
-        let g = put.value
-        let top = infix(g)
-        output.innerHTML = top
-        
+        let g = input.value
+        let result = infix(g)
+        output.innerHTML =  "postfix: " + result.postfix +
+                            "<br>stack empty: " + result.stackEmpty
     }
     function infix(g){
         let out = ""
-        let myStake = new Stake()
+        const myStake = new Stake()
         for(let i = 0;i<g.length;i++){
             let ck = g.charAt(i)
-            if (ck == "("){
+             if (ck == "("){
                 myStake.push(ck)
             }else if (chack(ck)){
-                while(!myStake.isEmpy() && chakepriority(ck) <= chakepriority(myStake.peek()))
-                out = out+myStake.pop()
-            }else if (ck == ")"){
-                while(!myStake.isEmpy() && myStake.peek() != "("){
-                    out = out+myStake.pop()
+                while(!myStake.isEmpy() && priority(ck) <= priority(myStake.peek())){
+                   out = out + myStake.pop()
                 }
+                myStake.push(ck)
+            }else if (ck == ")"){
+                while(!myStake.isEmpy() && myStake.peek() !== "(") { 
+                   out = out + myStake.pop()
+                }
+                myStake.pop()
             }else{
                 out = out+ck
-            }
-            myStake.push(ck)
-            console.log(myStake);
+            } 
+            console.log(myStake.isEmpy()
+                ?"stake empty":
+                "stake top "+myStake.peek(),
+                "| out:",out);
             
         }
         while(!myStake.isEmpy()){
-            out = out+myStake.pop()
+            out = out + myStake.pop()
         }
-        return out
+        return {
+            postfix: out,
+            stackEmpty: myStake.isEmpy()
+        }
+            
     }
     function chack (c){
         if(c == "+" || c == "-" || c == '*' || c == '/' || c == "^"){
@@ -54,7 +63,7 @@
             return false
         }
     }
-    function chakepriority(c) {
+    function priority(c) {
         if(c == "+" || c == "-"){
             return 1
         }
@@ -65,18 +74,18 @@
         }else{
             return 0
         }
-        console.log(myStake.chakepriority());
+        console.log(out);
         
     }
     class Stake{
         constructor(){
-            this.Stake = []
+            this.items = []
         }
         push(value){
-            this.Stake.push(value)
+            this.items.push(value)
         }
         isEmpy(){
-            return this.Stake.length == 0
+            return this.items.length === 0
             // if(this.Stake.length == 0){
             //     return true
             // }
@@ -86,7 +95,7 @@
         }
         pop(){
             return this.isEmpy() ? "" :
-            this.Stake.pop()
+            this.items.pop()
             // if(this.isEmpy()){
             //     return ""
             // }
@@ -95,7 +104,7 @@
             // }
         }   
         peek(){
-            return this.Stake[this.Stake.length-1]
+            return this.items[this.items.length-1]
         }
     }
     // let myStkae = new Stake()
