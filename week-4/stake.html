@@ -18,41 +18,34 @@
     function main(){
         let g = input.value
         let result = infix(g)
-        output.innerHTML =  "postfix: " + result.postfix +
-                            "<br>stack empty: " + result.stackEmpty
+        output.innerHTML =  "postfix: " + result.postfix 
     }
     function infix(g){
         let out = ""
-        const myStake = new Stake()
+        let mystack = new stack()
+        console.log(mystack);
         for(let i = 0;i<g.length;i++){
             let ck = g.charAt(i)
              if (ck == "("){
-                myStake.push(ck)
-            }else if (chack(ck)){
-                while(!myStake.isEmpy() && priority(ck) <= priority(myStake.peek())){
-                   out = out + myStake.pop()
-                }
-                myStake.push(ck)
-            }else if (ck == ")"){
-                while(!myStake.isEmpy() && myStake.peek() !== "(") { 
-                   out = out + myStake.pop()
-                }
-                myStake.pop()
-            }else{
-                out = out+ck
-            } 
-            console.log(myStake.isEmpy()
-                ?"stake empty":
-                "stake top "+myStake.peek(),
-                "| out:",out);
-            
-        }
-        while(!myStake.isEmpy()){
-            out = out + myStake.pop()
-        }
-        return {
-            postfix: out,
-            stackEmpty: myStake.isEmpy()
+                 mystack.push(ck)
+                }else if (chack(ck)){
+                    while(!mystack.isEmpty() && priority(ck) <= priority(mystack.peek())){
+                        out += mystack.pop()
+                    }
+                    mystack.push(ck)
+                }else if (ck == ")"){
+                    while(!mystack.isEmpty() && mystack.peek() !== "(") { 
+                        out += mystack.pop()
+                    }
+                    mystack.pop()
+                }else out += ck
+                console.log(out+mystack.items);
+            }
+            while(!mystack.isEmpty()){
+                out += mystack.pop()
+            }
+            return {
+                postfix: out,
         }
             
     }
@@ -74,17 +67,16 @@
         }else{
             return 0
         }
-        console.log(out);
         
     }
-    class Stake{
+    class stack{
         constructor(){
             this.items = []
         }
         push(value){
             this.items.push(value)
         }
-        isEmpy(){
+        isEmpty(){
             return this.items.length === 0
             // if(this.Stake.length == 0){
             //     return true
@@ -94,7 +86,7 @@
             // }
         }
         pop(){
-            return this.isEmpy() ? "" :
+            return this.isEmpty() ? "" :
             this.items.pop()
             // if(this.isEmpy()){
             //     return ""
@@ -107,7 +99,8 @@
             return this.items[this.items.length-1]
         }
     }
-    // let myStkae = new Stake()
+  
+     
     // myStkae.push("a")
     // myStkae.push("b")
     // myStkae.push("c")
