@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    class Queue {
+        constructor() {
+            this.list = []
+        }
+        isEmty() {
+            return this.list.length == 0
+        }
+        nQueue(value){
+            this.list.push(value)
+        }
+        deQueue() {
+            if(this.isEmty()) {
+                return undefined
+            }else return this.list.shift()
+        }
+
+    }
+
+    let myQunue = new Queue()
+    myQunue.nQueue("a")
+    myQunue.nQueue("b")
+    myQunue.nQueue("c")
+    console.log(myQunue);
+    let v = myQunue.deQueue()
+    console.log("delete :",);
+    v = myQunue.deQueue()
+    v = myQunue.deQueue()
+    console.log("delete :",);
+    
+    
+    
+
+    
+</script>
