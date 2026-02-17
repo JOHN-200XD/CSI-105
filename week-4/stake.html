@@ -27,23 +27,19 @@
         for(let i = 0;i<g.length;i++){
             let ck = g.charAt(i)
             if (ck == "("){
-                myStake.push(ck)
-            }else if (chack(ck)){
-                while(!myStake.isEmpy() && chakepriority(ck) <= chakepriority(myStake.peek()))
-                out = out+myStake.pop()
+            }else if (chack()){
+                while(!myStake.isEmpy() && chakepriority() <= chakepriority(myStake.peek()))
+                     out+myStake.pop()
             }else if (ck == ")"){
                 while(!myStake.isEmpy() && myStake.peek() != "("){
-                    out = out+myStake.pop()
+                     out+myStake.pop()
                 }
-            }else{
-                out = out+ck
-            }
-            myStake.push(ck)
-            console.log(myStake);
-            
+            }else out = out+ck
+                    myStake.push(ck)
+                    console.log(myStake)
         }
         while(!myStake.isEmpy()){
-            out = out+myStake.pop()
+                myStake.pop()
         }
         return out
     }
