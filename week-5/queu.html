@@ -6,10 +6,48 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div class="">
+    <label for="input"></label>
+    <input type="text" name="" id="infor">
+    <h1 id="text"></h1>
+    </div>
+    <button onclick="main()">ok</button>
+    <button onclick="Delet()">Delete</button>
 </body>
 </html>
 <script>
+    const output = document.getElementById("text")
+    const input  =  document.getElementById("infor")
+    function main() {
+        let g = input.value
+        myQunue.nQueue(g)
+        let result = fext(g)
+        output.innerHTML = result 
+        console.log(result);
+        console.log(myQunue);
+        if(myQunue.isEmty()){
+            output.innerHTML = "Queue is empty"
+        }
+    }
+    function Delet() {
+        myQunue.deQueue()
+        if(myQunue.isEmty()){
+            output.innerHTML = "Queue is empty"
+        }else{
+            let result = fext()
+            output.innerHTML = result 
+            console.log(result);
+            console.log(myQunue);
+        }
+       
+    }
+    function fext() {
+        out = "" 
+        for(let i=0; i<myQunue.list.length; i++){
+            out += myQunue.list[i]+"<=="
+        }
+        return out
+    }
     class Queue {
         constructor() {
             this.list = []
@@ -25,22 +63,19 @@
                 return undefined
             }else return this.list.shift()
         }
-
+        
     }
-
     let myQunue = new Queue()
-    myQunue.nQueue("a")
-    myQunue.nQueue("b")
-    myQunue.nQueue("c")
-    console.log(myQunue);
-    let v = myQunue.deQueue()
-    console.log("delete :",);
-    v = myQunue.deQueue()
-    v = myQunue.deQueue()
-    console.log("delete :",);
-    
-    
-    
 
+    
+    // myQunue.nQueue("a")
+    // myQunue.nQueue("b")
+    // myQunue.nQueue("c")
+    // console.log(myQunue);
+    // let v = myQunue.deQueue()
+    // console.log("delete :",);
+    // v = myQunue.deQueue()
+    // console.log("delete :",);
+    // console.log(myQunue);
     
 </script>
