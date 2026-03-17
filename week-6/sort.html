@@ -4,69 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sort</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="man">
+        <div class="box-1">
+            <label for="quantity">จำนวน</label>
+        <input type="number" name="" id="quantity">
+    <label for="Max">ค่าสูงสุด</label>
+        <input type="number" name="" id="Max">
+            <button onclick="rm()">Random</button>
+    <h3 id="r-put">Random Numbers</h3>
+
+            <div class="box-2">
+                <select name="" id="manu">
+                    <optgroup>
+                        <option value="bubble">Bubble</option>
+                        <option value="insertion">Insertion</option>
+                        <option value="shell" >Shell</option>
+                    </optgroup>
+                </select>    
+                        <button onclick="Sorting()">Sort</button>
+            <h3 id="put_1">Before//Sort</h3>
+        <h3 id="put_2">After//Sort</h3>
+
+                    <div id="chart">
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
-<script>
-    class Sort {
-        bubble(arr) {
-            let temp = []   
-            for (let i = 0; i<arr.length-1; i++) {
-                for (let k = 0; k<(arr.length-i)-1; k++) {
-                    if (arr[k] > arr[k+1]) {
-                        temp = arr[k]
-                        arr[k] = arr[k+1]
-                        arr[k+1] = temp
-                    }
-                }
-
-            }
-        }
-
-        insertionSort(arr){
-            let key,k
-            for(let i = 1; i<arr.length;i++){
-                key = arr[i]
-                k = i-1
-                while(k>=0 && key<arr[k]){
-                    arr[k+1] = arr[k]
-                    k = k-1
-                }
-                arr[k+1] = key
-            }
-        }
-
-    //     Shell(arr) {
-    //         let gap = Math.floor(arr.length/2) 
-    //         let temp,k  
-    //             while(gap > 0){
-    //                 for(let i = gap;i<arr.length;i++){
-    //                     temp = arr[i]
-    //                     k = i 
-    //                     while(k >= gap && arr[k-gap] > temp){
-    //                         arr[k] = arr[k-gap]
-    //                         k = k - gap
-    //                     }
-    //                 }   arr[k] = temp
-    //                 gap = Math.floor(gap/2)
-    //             }
-    //     } 
-    }
-    let mksort = new Sort()
-    let data_1 = []
-        for(let i = 0 ;i<10;i++){
-            data_1.push(Math.floor(Math.random()*100))
-        }
-    // let data = []
-    // for(let i = 0;i<10;i++){
-    //     data.push(Math.floor(Math.random()*100))
-    // }
-    console.log("Shell",data_1);
-    mksort.Shell(data_1)
-    console.log("Shell",data_1);
-
-
-    
-</script>
+<script src="js.js"></script>
