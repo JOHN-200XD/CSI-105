@@ -8,40 +8,39 @@ document.getElementById("num").addEventListener("keypress", function(event){
         addData();
     }   
 });
-document.getElementById("num").addEventListener("keypress", function(event_dele){
-    if (event_dele.key === 'shift'){
-        dele();
-    }   
-});
+
 function addData() {
     let num = parseInt(n.value)
     arr.push(num)
     console.log(arr);
     // out.innerHTML = arr;
+    
+    if (isNaN(num)){
+        out.innerHTML = "Push number ";
+        showImg_null();
+        return;
+    }
     for (let i = 0; i < arr.length; i++){
         out.innerHTML = ""; 
         out.innerHTML = arr + "<br>";
     } if (num % 2 === 0){
-        let pat = num * 2
+        let pat = num * num
         out.innerHTML += num + " is คู่ <br>" + pat + "<br>"
         showImg_pair();
+        return pat;
 
     } if (num % 2 !== 0){
-        let pat = num * 1
+        let pat = num * num
         out.innerHTML += num + " is คี่ <br>" + pat + "<br>";
         showImg_odd();
-     
+           return pat;
     }  if (num <= 0 ){
         out.innerHTML = "";
         showImg_null_num();
-        // arr.pop(); // ตัว pop จะลบค่าที่ไม่ถูกต้องออกจากอาเรย์จากด้านหลัง
-    } if (isNaN(num)){
-        out.innerHTML = "Push number ";
-        showImg_null();
-    }
+    } 
 }
+// ตัว pop จะลบค่าที่ไม่ถูกต้องออกจากอาเรย์จากด้านหลัง
 // ลบค่าตัวท้ายสุดออกจากอาเรย์
-document.getElementById("dele") 
 function dele() {
     arr.pop();
     out.innerHTML = ""; 
@@ -52,6 +51,11 @@ function dele() {
         showImg_null(); 
     } 
 }
+
+
+
+
+
 
 // play and stop music
 let p = 0;
@@ -76,6 +80,9 @@ function playMusic() {
 
     }   
 }
+
+
+
 
 // แสดงรูป 
 function showImg_pair(){
