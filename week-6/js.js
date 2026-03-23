@@ -53,7 +53,7 @@
             },i*50); 
         }
     }
-    // อนิเมชั่น กราฟ 
+    // อนิเมชั่น กราฟ จับเวลา
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }

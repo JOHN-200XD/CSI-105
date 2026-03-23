@@ -1,9 +1,19 @@
 let data = document.getElementById("data")
 let output = document.getElementById("output")
 document.getElementById("push").onclick = function(){
+        if (!data.value) {
+        alert("ใส่ข้อมูลก่อน")
+        return
+    }
+
     myList.push(data.value)
     render();
     console.log(myList);
+}
+
+function clearList() {
+    myList.clear()
+    render()
 }
 function popNode() {
     let r = myList.pop();
@@ -13,6 +23,11 @@ function popNode() {
     
 }
 function unshift(){
+        if (!data.value) {
+        alert("ใส่ข้อมูลก่อน")
+        return
+    }
+    
     let r = myList.unshift(data.value)
     render();
     console.log(r);
@@ -22,17 +37,60 @@ function shiftNode(){
     render();
     console.log(r);
 }
+
+function setNode() {
+    let index = parseInt(prompt('ใส่ index'))
+    if (isNaN(index)) {
+        alert("กรุณาใส่ตัวเลข")
+        return
+    }
+
+    let value = data.value
+    if (!value) {
+        alert("ใส่ข้อมูลก่อน")
+        return
+    }
+
+    let r = myList.set(index, value)
+    render()
+    console.log(r);
+}
+function getNode() {
+    let index = parseInt(prompt('ใส่ index'))
+
+    if (isNaN(index)) {
+        alert("กรุณาใส่ตัวเลข")
+        return
+    }
+
+    let node = myList.get(index)
+
+    if (!node) {
+        alert("index ไม่ถูกต้อง")
+        return
+    }
+
+    alert(`ค่าที่ index ${index} คือ ${node.element}`)
+}
 function insert() {
-    let index = 0
+    let index = parseInt(prompt('ใส่--Index'))
+    if (isNaN(index)) {
+        alert("กรุณาใส่ตัวเลข")
+        return
+    }
     let value = data.value
     let r = myList.insert(index, value) // index, value (...)
-    render();
+    render()
     console.log(r);
 }
 function re_insert() {
-    let index = 0
+    let index = parseInt(prompt('ใส่--Index'))
+    if (isNaN(index)) {
+        alert("กรุณาใส่ตัวเลข")
+        return
+    }
     let r = myList.removed(index)
-    render();
+    render()
     console.log(r);
 }
 function render() {
@@ -40,7 +98,7 @@ function render() {
     let current = myList.head;
     if (!current) {
         output.innerHTML = "(complesson delete)";
-    return;
+        return;
     }
     while (current !== null) {
         output.innerHTML += current.element;
@@ -63,6 +121,21 @@ class Linked {
             this.last = null
             this.length = 0
     }
+    clear() {
+        this.head = null
+        this.last = null
+        this.length = 0
+    }
+    set(index, value) {
+    let node = this.get(index)
+
+    if (!node) {
+        return false
+    }
+
+    node.element = value
+    return true
+}
     push(value) {
         const newNode = new Node(value)
         if (this.head == null) {
