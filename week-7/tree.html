@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" name="" id="number">
+    <button onclick="addNumber()">Add</button>
+    <h1>Binary Tree</h1>
+    <h2 id="showTree"></h2>
+</body>
+</html>
+<script>
+    let numberInput = document.getElementById("number");
+    let str = document.getElementById("showTree");
+    function addNumber() {
+        let number = parseInt(numberInput.value);
+        tree.add(number);
+        str.innerHTML = tree.inorder(tree.root, "");
+        console.log(tree);
+
+    }
+    class NodeData {
+        constructor(eleman) {
+            this.eleman = eleman;
+            this.nextleft = null;
+            this.nextright = null;
+        }
+    }
+    class binaryTree {
+        constructor() {
+            this.root = null;
+        }
+        addRecursive(current, eleman) {
+            if (current == null) {
+                return new NodeData(eleman);
+                
+            }if (eleman < current.eleman) {
+                current.nextleft = this.addRecursive(current.nextleft, eleman);
+            }else if (eleman > current.eleman) {
+                current.nextright = this.addRecursive(current.nextright, eleman);
+            }
+            return current;
+        }
+        add(eleman){
+            this.root = this.addRecursive(this.root, eleman);
+        }
+        inorder(node, str){
+            if(node != null){
+               str = this.inorder(node.nextleft, str);
+               str = str+node.eleman + " ";
+               str = this.inorder(node.nextright, str);
+            }
+            return str;
+        }
+        postorder(node, str){
+            if(node != null){
+               str = this.postorder(node.nextleft, str);
+               str = this.postorder(node.nextright, str);
+               str = str+node.eleman + " ";
+            }
+            return str;
+        }
+    
+        outder(node, str){
+            if(node != null){
+                str = str+node.eleman + " ";
+               str = this.postorder(node.nextleft, str);
+               str = this.postorder(node.nextright, str);
+            }
+            return str;
+        }
+    
+        
+    }
+    let tree = new binaryTree();
+    tree.add(10);
+    tree.add(5);
+    tree.add(4);
+    tree.add(15);
+    tree.add(8);
+    tree.add(6);
+    tree.add(20);
+    tree.add(12);
+    tree.add(14);
+    let str1 = tree.inorder(tree.root, "");
+    console.log(str1);
+    let str2 = tree.postorder(tree.root, "");
+    console.log(str2);
+    let str3 = tree.outder(tree.root, "");
+    console.log(str3);
+
+    
+</script>
